@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Login = ({ onLogin, onSwitch }) => {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ const Login = ({ onLogin, onSwitch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/login', {
+      const response = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password
       });

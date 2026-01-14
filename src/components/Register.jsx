@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Register = ({ onRegister, onSwitch }) => {
   const [username, setUsername] = useState('');
@@ -10,13 +11,13 @@ const Register = ({ onRegister, onSwitch }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/register', {
+      const response = await axios.post(`${API_BASE_URL}/register`, {
         username,
         email,
         password
       });
       // Auto login after registration
-      const loginResponse = await axios.post('http://localhost:5000/api/login', {
+      const loginResponse = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password
       });
